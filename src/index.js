@@ -1,59 +1,17 @@
-const usersBlock = document.getElementById('pills-users');
-const carsBlock = document.getElementById('pills-cars');
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-const usersOptions = users.map((item) => {
-  const { name, age } = item;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-  return {
-    text: `${name}, ${age}`,
-    disabled: false,
-    instance: item,
-  };
-});
-
-const carsOptions = cars.map((item) => {
-  const { brand, year } = item;
-
-  return {
-    text: `${brand} ${year}`,
-    disabled: false,
-    instance: item,
-  };
-});
-
-const renderUsers = () => {
-  usersBlock.innerHTML = '';
-
-  users.forEach((item) => {
-    usersBlock.appendChild(getUserHtml(item));
-
-    const selectWrapper =
-      usersBlock.children[usersBlock.children.length - 1].querySelector(
-        '.select-wrapper'
-      );
-
-    appendSelectHtml(
-      item.setCar.bind(item),
-      carsOptions,
-      selectWrapper,
-      'Choose a car'
-    );
-    
-  });
-};
-
-const renderCars = () => {
-  carsBlock.innerHTML = '';
-
-  cars.forEach((item) => {
-    carsBlock.appendChild(getCarHtml(item));
-  });
-};
-
-usersBlock.addEventListener('change', function () {
-  renderUsers();
-  renderCars();
-});
-
-renderUsers();
-renderCars();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
